@@ -1,0 +1,74 @@
+{ "defaultGeofenceName": "Home",
+	"speech": {
+    "theLocationOfTracker": "The location of tracker ",
+    "is": " is ",
+		"placeCityConjunction": ", ",
+		"positionUnknown": "Unknown"
+	},
+	"settings": {
+    "OSMlanguage": "en",
+		"title": "Vodafone drivexone settings",
+		"intro": "Before you can add your drivexone devices you need to enter your username and password for the drivexone services first. These settings are stored locally on your Homey.",
+		"instruction": "Configure your tracking device and complete setup with the drivexone smartphone app first if you don't have it yet.",
+		"account": {
+			"title": "Account settings",
+			"fieldUsername": "Username",
+			"fieldPassword": "Password",
+      "fieldSpeech": "Enable speech triggers",
+			"fieldPolling": "Enable polling",
+			"fieldDebug": "Enable debug logging",
+			"buttonSave": "Save",
+			"buttonClear": "Remove account settings",
+			"messages": {
+				"busyClearing": "Clearing account settings from Homey...",
+				"busySaving": "Account settings valid, saving to Homey...",
+				"busyValidation": "Validation account settings...",
+				"confirmClearAccount": "Are you sure you want to clear the account? Tracking will stop and configured devices will stop working.",
+				"errorValidation": {
+					"no_username": "No username set",
+					"no_password": "No password set",
+					"invalid_grant": "Invalid username or password",
+					"no_vehicles": "Something went wrong contacting the server"
+				},
+				"errorSaving": "Error saving account settings to Homey",
+				"successClearing": "Account settings cleared successfully",
+				"successSaving": "Account settings saved successfully"
+			}
+		},
+		"geofences": {
+			"title": "Geofences",
+      "geofencesourcetype": {
+        "AUTO": "automatic",
+        "DEFAULT": "default",
+        "USER": "user"
+      },
+      "labelNameGeofence": "Enter geofence name",
+      "newGeofenceName": "New geofence",
+      "errorGeofenceNameUnique": "Geofence name must be unique!",
+      "labelShow": "Show",
+      "optionTrackers": "Trackers",
+      "optionStartPoints": "Start points",
+      "optionEndPoints": "End points",
+      "optionRoutes": "Routes"
+  	},
+		"debug": {
+			"title": "Logging",
+			"thDateTime": "Date and time",
+			"thMessage": "Message",
+      "buttonClear": "Clear logging"
+		}
+	},
+	"pair": {
+		"start": {
+			"title": "Add tracking device",
+      "intro": "If a valid account is configured in the app settings sections of Homey, the trackers in your drivexone account will be listed.",
+			"buttonClose": "Close",
+			"messages": {
+				"busyValidation": "Validation account settings...",
+				"busyGetTrackers": "Get trackers from account...",
+				"errorNoSettings": "No account configured in the app settings section.",
+				"errorInvalidSettings": "Invalid account configured in the app settings sections."
+			}
+		}
+  }
+}

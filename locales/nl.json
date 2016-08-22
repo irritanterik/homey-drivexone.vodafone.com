@@ -1,0 +1,62 @@
+{ "defaultGeofenceName": "Thuis",
+	"speech": {
+    "theLocationOfTracker": "De locatie van ",
+    "is": " is ",
+		"placeCityConjunction": " in ",
+		"positionUnknown": "Onbekend"
+	},
+	"settings": {
+    "OSMlanguage": "nl",
+		"title": "Vodafone drivexone instellingen",
+		"intro": "Voordat er te volgen voertuigen of personen kunnen worden toegevoegd moet hier een geldige gebruikersnaam en wachtwoord worden opgegeven voor het vodafone drivexone account. Deze instellingen worden op je Homey opgeslagen.",
+		"instruction": "Voltooi eerst de configuratie van je GPS-tracker met de drivexone app op je smart phone als je dit nog niet hebt gedaan.",
+		"account": {
+			"title": "GPS-Trace account",
+			"fieldUsername": "Gebruikersnaam",
+			"fieldPassword": "Wachtwoord",
+      "fieldSpeech": "Inschakelen spraak triggers",
+			"fieldPolling": "Inschakelen polling",
+			"fieldDebug": "Inschakelen debug log",
+			"buttonSave": "Opslaan",
+			"buttonClear": "Account instellingen verwijderen",
+			"messages": {
+				"busyClearing": "Account verwijderen van Homey...",
+				"busySaving": "Account is geldig. Instellingen worden opgeslagen...",
+				"busyValidation": "Account valideren...",
+				"confirmClearAccount": "Weet je zeker dat je het account wilt wissen? Tracking zal worden gestopt en geconfigureerde apparaten stoppen met werken.",
+				"errorValidation": {
+					"no_username": "Geen gebruikersnaam opgevoerd",
+					"no_password": "Geen wachtwoord opgevoerd",
+					"invalid_grant": "Ongeldige gebruikersnaam of wachtwoord",
+					"11": "Er ging iets mis bij het communiceren met de server"
+				},
+				"errorSaving": "Fout bij het opslaan van het account",
+				"successClearing": "Account is verwijderd",
+				"successSaving": "Account is opgeslagen"
+			}
+		},
+		"geofences": {
+			"title": "Geofences",
+			"intro": "Nog niet beschikbaar"
+		},
+		"debug": {
+			"title": "Logging",
+			"thDateTime": "Datum en tijd",
+			"thMessage": "Bericht",
+      "buttonClear": "Log verwijderen"
+		}
+	},
+	"pair": {
+		"start": {
+			"title": "Toevoegen tracker",
+			"intro": "Als er een geldig account is ingesteld in de app-instellingen van Homey, dan worden de in het drivexone account opgenomen trackers weergegeven.",
+			"buttonClose": "Sluiten",
+			"messages": {
+				"busyValidation": "Account valideren...",
+				"busyGetTrackers": "Inlezen trackers uit account...",
+				"errorNoSettings": "Er is geen account ingesteld in de app-instellingen.",
+				"errorInvalidSettings": "Er is een ongeldig account ingesteld in de app-instellingen."
+			}
+		}
+	}
+}

@@ -1,0 +1,16 @@
+{
+  "name":"Vodafone-Drivexone",
+  "author":"Erik van Dongen",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/irritanterik/homey-drivexone.vodafone.com"
+  },
+  "dependencies":{
+     "http.min":"^1.2.4",
+     "point-in-polygon":"^1.0.0"
+  },
+  "standard": {
+    "globals": [ "Homey", "__" ]
+  }
+}

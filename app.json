@@ -1,0 +1,397 @@
+{
+  "id": "com.vodafone.drivexone",
+  "version": "0.0.1",
+  "compatibility": ">=0.9.1",
+  "name": {
+    "en": "Vodafone drivexone",
+    "nl": "Vodafone drivexone"
+  },
+  "description":{
+     "en":"Track vehicles with Vodafone drivexone",
+     "nl":"Volg je auto met Vodadone drivexone"
+  },
+  "author":{
+     "name":"Erik van Dongen",
+     "website":"http://github.com/irritanterik/"
+  },
+  "category":"tools",
+  "permissions":[
+    "homey:manager:geolocation",
+    "homey:manager:speech-input",
+    "homey:manager:speech-output"
+  ],
+  "images":{
+     "large":"./assets/images/large.jpg",
+     "small":"./assets/images/small.jpg"
+  },
+  "capabilities":{
+    "location": {
+      "type": "string",
+      "title": {
+        "en": "Location",
+        "nl": "Positie"
+      },
+      "units": {
+        "en": "Lat Lng"
+      },
+      "desc": {
+        "en": "Location of tracker"
+      },
+      "getable": true,
+      "setable": false
+    },
+    "moving": {
+      "type": "boolean",
+      "title": {
+        "en": "Moving",
+        "nl": "Onderweg"
+      },
+      "desc": {
+        "en": "Is tracker moving",
+        "nl": "Is tracker onderweg"
+      },
+      "getable": true,
+      "setable": false
+    }
+  },
+  "drivers":[
+    {
+      "id":"tracker",
+      "name":{
+        "en":"Tracker",
+        "nl":"Tracker"
+      },
+      "images":{
+        "large":"drivers/tracker/assets/images/large.png",
+        "small":"drivers/tracker/assets/images/small.png"
+      },
+      "class":"other",
+      "capabilities":["location", "moving"],
+      "settings":[
+        {
+          "type":"group",
+          "label":{
+            "en":"General settings",
+            "nl":"Instellingen"
+          },
+          "children":[
+            {
+              "id":"retriggerRestrictTime",
+              "type":"number",
+              "label":{
+                "en":"Minimum time between movement triggers (seconds)",
+                "nl":"Minimumtijd tussen beweging triggers (seconden)"
+              },
+              "value": 1,
+              "attr":{
+                "min": 0,
+                "max": 86400
+              }
+            },
+            {
+              "id":"retriggerRestrictDistance",
+              "type":"number",
+              "label":{
+                "en":"Minimum distance travelled between movement triggers (meters)",
+                "nl":"Minimaal afgelegde afstand tussen triggers (meter)"
+              },
+              "value": 1,
+              "attr":{
+                "min": 0,
+                "max": 40075000
+              }
+            },
+            {
+              "id":"stoppedMovingTimeout",
+              "type":"number",
+              "label":{
+                "en":"Minimum time between last new location and trigger 'stops moving' (seconds)",
+                "nl":"Minimumtijd tussen laatst ontvangen locatie en trigger 'einde beweging' (seconden)"
+              },
+              "value": 120,
+              "attr":{
+                "min": 30,
+                "max": 86400
+              }
+            }
+          ]
+        }
+      ],
+      "pair":[
+        {
+          "id":"start"
+        },
+        {
+          "id":"list_devices",
+          "template":"list_devices",
+          "navigation":{
+            "next":"add_tracker"
+          }
+        },
+        {
+          "id":"add_tracker",
+          "template":"add_devices"
+        }
+      ]
+    }
+  ],
+  "speech": [
+    {
+      "id": "gps",
+      "importance": 1,
+      "triggers": {
+        "en": ["gps"],
+        "nl": ["gps"]
+      }
+    },{
+      "id": "dude",
+      "importance": 0.3,
+      "triggers": {
+        "en": ["dude"],
+        "nl": ["gast"]
+      }
+    },{
+      "id": "where_is",
+      "importance": 0.4,
+      "triggers": {
+        "en": ["where is"],
+        "nl": ["waar is"]
+      }
+    },{
+      "id": "address",
+      "importance": 0.4,
+      "triggers": {
+        "en": ["address", "location", "position"],
+        "nl": ["adres", "locatie", "positie"]
+      }
+    }
+  ],
+  "speechExamples":[
+    {
+      "en": "Dude, where is my car",
+      "nl": "Gast, waar is mijn auto"
+    },
+    {
+      "en": "Where is <tracker name>",
+      "nl": "Waar is <tracker naam>"
+    },
+    {
+      "en": "GPS address <tracker name>",
+      "nl": "GPS adres <tracker naam>"
+    }
+  ],
+  "flow": {
+    "triggers":[
+      {
+        "id":"tracker_moved",
+        "title":{
+          "en":"Location changed",
+          "nl":"Locatie gewijzigd"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter":"driver_id=tracker"
+          }
+        ],
+        "tokens":[
+          {
+            "name":"address",
+            "title":{
+              "en":"address",
+              "nl":"adres"
+            },
+            "example":{
+              "en":"Piccadilly Circus, London",
+              "nl":"Kalverstraat in Amsterdam"
+            }
+          },{
+            "name":"distance",
+            "title":{
+              "en":"distance",
+              "nl":"afstand"
+            },
+            "example":{
+              "en":"2500"
+            }
+          }
+        ]
+      },{
+        "id":"tracker_start_moving",
+        "title":{
+          "en":"Starts moving",
+          "nl":"Komt in beweging"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter":"driver_id=tracker"
+          }
+        ],
+        "tokens":[
+          {
+            "name":"address",
+            "title":{
+              "en":"address",
+              "nl":"adres"
+            },
+            "example":{
+              "en":"Piccadilly Circus, London",
+              "nl":"Kalverstraat in Amsterdam"
+            }
+          },{
+            "name":"distance",
+            "title":{
+              "en":"distance",
+              "nl":"afstand"
+            },
+            "example":{
+              "en":"25.54"
+            }
+          }
+        ]
+      },{
+        "id":"tracker_stopt_moving",
+        "title":{
+          "en":"Stops moving",
+          "nl":"Stopt beweging"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter":"driver_id=tracker"
+          }
+        ],
+        "tokens":[
+          {
+            "name":"start_location",
+            "title":{
+              "en":"start address",
+              "nl":"beginpunt"
+            },
+            "example":{
+              "en":"Piccadilly Circus, London",
+              "nl":"Kalverstraat in Amsterdam"
+            }
+          },{
+            "name":"stop_location",
+            "title":{
+              "en":"end address",
+              "nl":"bestemming"
+            },
+            "example":{
+              "en":"Piccadilly Circus, London",
+              "nl":"Kalverstraat in Amsterdam"
+            }
+          },{
+            "name":"distance",
+            "title":{
+              "en":"distance travelled",
+              "nl":"afgelegde afstand"
+            },
+            "example":{
+              "en":"2500.21"
+            }
+          }
+        ]
+      },{
+        "id":"tracker_geofence_entered",
+        "title":{
+          "en":"Entered geofence",
+          "nl":"Betreed geofence"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter":"driver_id=tracker"
+          },{
+            "name": "geofence",
+            "type": "autocomplete"
+          }
+        ]
+      },{
+        "id":"tracker_geofence_left",
+        "title":{
+          "en":"Left geofence",
+          "nl":"Verlaat geofence"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter":"driver_id=tracker"
+          },{
+            "name": "geofence",
+            "type": "autocomplete"
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id":"tracker_moving",
+        "title":{
+           "en":"Is !{{|not}} moving",
+           "nl":"Is !{{|niet}} in beweging"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter":"driver_id=tracker"
+          }
+        ]
+      },{
+        "id":"tracker_geofence",
+        "title":{
+          "en":"Is !{{|not}} in geofence",
+          "nl":"Is !{{|niet}} in geofence"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter":"driver_id=tracker"
+          },{
+            "name": "geofence",
+            "type": "autocomplete"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id":"say_address",
+        "title":{
+          "en":"Say address",
+          "nl":"Vertel adres"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter":"driver_id=tracker"
+          }
+        ]
+      },
+      {
+        "id":"get_position",
+        "title":{
+          "en":"Update tracker",
+          "nl":"Bijwerken tracker"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter":"driver_id=tracker"
+          }
+        ]
+      }
+    ]
+  }
+}
