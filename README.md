@@ -49,6 +49,9 @@ The location of your Homey will be added as a default geofence. Additional geofe
 
 ---
 ### Changelog
+##### version 0.0.2
+- Fixed bug on speech trigger handling because of changed Homey API
+
 ##### version 0.0.1
 - First version based op GPS Trace app v 0.4.0
 

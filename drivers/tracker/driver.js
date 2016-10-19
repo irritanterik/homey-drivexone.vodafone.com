@@ -409,9 +409,9 @@ var self = {
       if (speech.devices) {
         speech.devices.forEach(function (device) {
           if (tracking == null) {
-            updateTracker(device.id, ready)
+            updateTracker(device.data.id, ready)
           } else {
-            ready(null, device.id)
+            ready(null, device.data.id)
           }
         })
         callback(null, true)
