@@ -583,23 +583,29 @@ function loadTrackers () {
     if (error) return console.error(error)
     trackers = result
     $.each(trackers, function (trackerId) {
-      var trackerLocation = new google.maps.LatLng(trackers[trackerId].location.lat, trackers[trackerId].location.lng)
-      var infowindow = new google.maps.InfoWindow({
-        content: '' + trackers[trackerId].name
-      })
-      var trackerMarker = new google.maps.Marker({
-        position: trackerLocation,
-        map: null,
-        draggable: false
-      })
-      trackerMarker.trackerId = trackerId
-      google.maps.event.addListener(trackerMarker, 'click', function () {
-        infowindow.open(map, trackerMarker)
-      })
-      trackerMarkers.push(trackerMarker)
+      if (trackers[trackerId].location.lat) {
+        var trackerLocation = new google.maps.LatLng(trackers[trackerId].location.lat, trackers[trackerId].location.lng)
+        var trackerMarker = new google.maps.Marker({
+          position: trackerLocation,
+          map: null,
+          draggable: false
+        })
+        trackerMarker.trackerId = trackerId
+        trackerMarker.infowindow = new google.maps.InfoWindow({
+          content: vehicleInfoWindow(trackerId, trackers[trackerId].location)
+        })
+        google.maps.event.addListener(trackerMarker, 'click', function () {
+          trackerMarker.infowindow.open(map, trackerMarker)
+        })
+        trackerMarkers.push(trackerMarker)
+      }
     })
     showTrackers()
   })
+}
+
+function vehicleInfoWindow (vehicleId, location) {
+  return `<strong>${trackers[vehicleId].name}</strong><br>${location.city} - ${location.place}`
 }
 
 function subscribeTrackerUpdates () {
@@ -608,6 +614,7 @@ function subscribeTrackerUpdates () {
     $.each(trackerMarkers, function (index) {
       if (trackerMarkers[index].trackerId === data.trackerId) {
         trackerMarkers[index].setPosition(new google.maps.LatLng(data.location.lat, data.location.lng))
+        trackerMarkers[index].infowindow.setContent(vehicleInfoWindow(index, data.location))
         if (data.moving) {
           trackerMarkers[index].setAnimation(google.maps.Animation.BOUNCE)
         } else {
