@@ -1,6 +1,6 @@
 {
   "id": "com.vodafone.drivexone",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": ">=0.10.5",
   "name": {
     "en": "Vodafone drivexone",
@@ -14,7 +14,10 @@
      "name":"Erik van Dongen",
      "website":"http://github.com/irritanterik/"
   },
-  "category":"tools",
+  "category":[
+		"tools",
+		"location"
+	],
   "permissions":[
     "homey:manager:geolocation",
     "homey:manager:speech-input",
