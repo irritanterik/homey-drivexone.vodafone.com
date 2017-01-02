@@ -1,7 +1,7 @@
 {
   "id": "com.vodafone.drivexone",
-  "version": "1.0.1",
-  "compatibility": ">=0.10.5",
+  "version": "1.0.2",
+  "compatibility": ">=1.1.2",
   "name": {
     "en": "Vodafone drivexone",
     "nl": "Vodafone drivexone"
@@ -147,13 +147,6 @@
         "nl": ["gps"]
       }
     },{
-      "id": "dude",
-      "importance": 0.3,
-      "triggers": {
-        "en": ["dude"],
-        "nl": ["gast"]
-      }
-    },{
       "id": "where_is",
       "importance": 0.4,
       "triggers": {
@@ -170,10 +163,6 @@
     }
   ],
   "speechExamples":[
-    {
-      "en": "Dude, where is my car",
-      "nl": "Gast, waar is mijn auto"
-    },
     {
       "en": "Where is <tracker name>",
       "nl": "Waar is <tracker naam>"
@@ -205,6 +194,7 @@
               "en":"address",
               "nl":"adres"
             },
+            "type":"string",
             "example":{
               "en":"Piccadilly Circus, London",
               "nl":"Kalverstraat in Amsterdam"
@@ -215,9 +205,8 @@
               "en":"distance",
               "nl":"afstand"
             },
-            "example":{
-              "en":"2500"
-            }
+            "type":"number",
+            "example":2500
           }
         ]
       },{
@@ -240,6 +229,7 @@
               "en":"address",
               "nl":"adres"
             },
+            "type":"string",
             "example":{
               "en":"Piccadilly Circus, London",
               "nl":"Kalverstraat in Amsterdam"
@@ -250,9 +240,8 @@
               "en":"distance",
               "nl":"afstand"
             },
-            "example":{
-              "en":"25.54"
-            }
+            "type":"number",
+            "example":25.54
           }
         ]
       },{
@@ -275,6 +264,7 @@
               "en":"start address",
               "nl":"beginpunt"
             },
+            "type":"string",
             "example":{
               "en":"Piccadilly Circus, London",
               "nl":"Kalverstraat in Amsterdam"
@@ -285,6 +275,7 @@
               "en":"end address",
               "nl":"bestemming"
             },
+            "type":"string",
             "example":{
               "en":"Piccadilly Circus, London",
               "nl":"Kalverstraat in Amsterdam"
@@ -295,9 +286,8 @@
               "en":"distance travelled",
               "nl":"afgelegde afstand"
             },
-            "example":{
-              "en":"2500.21"
-            }
+            "type":"number",
+            "example":2500
           }
         ]
       },{
