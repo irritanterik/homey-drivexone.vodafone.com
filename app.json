@@ -1,6 +1,6 @@
 {
   "id": "com.vodafone.drivexone",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "compatibility": ">=1.1.2",
   "name": {
     "en": "Vodafone drivexone",
@@ -15,8 +15,8 @@
      "website":"http://github.com/irritanterik/"
   },
   "category":[
-		"tools",
-		"localization"
+		"localization",
+    "tools"
 	],
   "permissions":[
     "homey:manager:geolocation",

@@ -3,6 +3,9 @@
 Track your car with the [Vodafone Drivexone](http://xone.vodafone.com/global/product/drivexone/) service.
 The location of your Homey will be added as a default geofence. Additional geofences can be added.
 
+If you like the app, buy me a beer!  
+[![Paypal beer button](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-pill-paypal-34px.png)](http://PayPal.Me/ErikvanDongen)
+
 ### Speech triggers, will answer with location:
  - Dude, where is my <car name> (NL: Gast waar is mijn <tracker naam>)
  - GPS <tracker name>
@@ -46,15 +49,3 @@ The location of your Homey will be added as a default geofence. Additional geofe
 - All distance tokens on flow cards contain values in meters (rounded-up)
 - Logging of movement will not survive a reboot. A first new location since reboot will (re)trigger the 'Tracker starts moving' card (TODO: Check this with vodafone)
 - Reselect geofence names in your flow cards after renaming a geofence, to be sure the geofence is referenced right.
-
----
-### Changelog
-##### version 0.0.2
-- Fixed bug on speech trigger handling because of changed Homey API
-
-##### version 0.0.1
-- First version based op GPS Trace app v 0.4.0
-
----
-### Donate
-Help me getting a Tesla Model S/3/X with a small [donation](http://PayPal.Me/ErikvanDongen). After delivery of the vehicle i will release a Homey app for Tesla a.s.a.p. ;).
